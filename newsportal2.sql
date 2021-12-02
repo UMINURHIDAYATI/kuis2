@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2017 at 10:38 AM
--- Server version: 10.1.24-MariaDB
--- PHP Version: 7.1.6
+-- Generation Time: Dec 02, 2021 at 06:26 AM
+-- Server version: 10.4.13-MariaDB
+-- PHP Version: 7.3.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `newsportal2`
 --
+CREATE DATABASE IF NOT EXISTS `newsportal2` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `newsportal2`;
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ INSERT INTO `commenter` (`com_id`, `user_id`) VALUES
 
 CREATE TABLE `comments` (
   `com_id` int(11) NOT NULL,
-  `time_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `details` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -105,9 +106,9 @@ INSERT INTO `comments` (`com_id`, `time_date`, `details`) VALUES
 CREATE TABLE `newspost` (
   `post_id` int(11) NOT NULL,
   `title` varchar(50) DEFAULT NULL,
-  `content` longtext,
+  `content` longtext DEFAULT NULL,
   `image` varchar(50) DEFAULT NULL,
-  `time_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `approved` varchar(25) DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -135,12 +136,9 @@ INSERT INTO `newspost` (`post_id`, `title`, `content`, `image`, `time_date`, `ap
 (18, 'A tainted legacy', '<p>Aung San Suu Kyi&rsquo;s name was once synonymous with the struggle against oppression when she had been under house arrest for almost a decade during military rule in Myanmar.</p>\r\n<p>&nbsp;</p>\r\n<p>In accepting the Nobel Peace Prize, she called for &ldquo;a world free from the displaced, the homeless, and the hopeless.&rdquo;</p>\r\n<p>But she has missed perhaps her greatest opportunity to make good on those words as the leader of Myanmar&rsquo;s first civilian government after a half-century of military rule.</p>\r\n<p>Suu Kyi has watched as 270,000 minority Rohingya Muslims &mdash; one-quarter of their population &mdash; have fled Myanmar over the past two weeks, escaping a bloody military crackdown in which soldiers set fire to homes and shot civilians as they tried to escape, according to accounts published by human rights groups.</p>\r\n<p>Many have been crammed into muddy, overcrowded camps in neighbouring Bangladesh, whose authorities this week raised concerns that Myanmar&rsquo;s military was planting land mines along the border while civilians fled.</p>\r\n<p>Dozens have drowned in river crossings. In displacement camps inside Myanmar, Rohingya activists say the government has blocked delivery of food and humanitarian supplies.</p>\r\n<p>Suu Kyi&rsquo;s questionable stance</p>\r\n<p>As condemnations pour in from across the world, Suu Kyi has defended not the displaced Rohingya but the army, saying critics of the crackdown were being deceived by &ldquo;a huge iceberg of misinformation.&rdquo;</p>\r\n<p>The army calls its actions &ldquo;clearance operations&rdquo; aimed at Rohingya insurgents who attacked police on August 25, killing 12 officers.</p>\r\n<p>Reconciling an activist&rsquo;s ideals with the hard realities of governing is never easy, but rarely has an international icon fallen so fast as Suu Kyi.</p>', 'upload/b491ddf30b.gif', '2017-09-20 05:56:34', 'yes'),
 (19, 'Dhaka roads: A post-rain disaster', '<p>When it rains in Dhaka, the threat of waterlogging is ever-present. Once the waters recede, the lifelines of the city &ndash; from narrow by-lanes to major roads &ndash; frequently fracture and the pitch begins to come off.<br />This year, the problem has been far more severe than the previous years, despite repeated pledges from city authorities to combat this nuisance once and for all.<br />No matter what part of the city someone lives in, be it under the Dhaka North City Corporation (DNCC) or Dhaka South City Corporation (DSCC), there is little to no chance of not complaining about the roads and the problems they cause &ndash; potholes, defaced pitch, and perennial maintenance &ndash; all resulting in sluggish traffic and incredible loss of time.<br />After the 2015 city corporation elections, Annisul Huq and Sayeed Khokon, both pledged Dhaka would be transformed into a &ldquo;smart city&rdquo; under their tenure.<br />Sayeed Khokon, mayor of Dhaka South, announced at the Digital World Conference 2016 in Dhaka that the city would be &ldquo;smart&rdquo; before 2017 calendars became obsolete.<br />Two years have passed and Mayor Khokon&rsquo;s deadline is closer than ever, but Dhaka roads are still littered with potholes.<br />The pain brought by the rain<br />The roads of Dhaka tend to cave in by the end of every monsoon. This monsoon was no different.<br />Subrata Mallik, a resident of Nurjahan Road in Mohammadpur, fumed over the aggravated conditions of the roads in Mohammadpur.<br />&ldquo;Every single year they talk about easing the life of commuters, and now look at the roads!&rdquo; he spat.<br />Subrata said: &ldquo;The smart city is a pipe dream for all the bluster and the fuss, the city corporation cannot even provide standard roads.&rdquo;<br />From Saat Masjid to Shia Masjid in Mohammadpur, the entire road is a debacle. The road from Mohammadpur bus stand to Rayerbazar is yet another mess. There are very few words which can sum up so efficiently, that a major road in a major city hub is in such poor condition.<br />After the July-August downpour, roads all over Mirpur, Kallyanpur, Nakhalpara, Shantinagar, Shahjadpur, Badda and Old Dhaka are in terrible condition.<br />Manholes, an urban pitfall<br />Unfinished manhole covers jeopardise pedestrians and passengers alike. Yet so many roads in the city have their covers either missing or half-finished.<br />The manhole covers are now around 5-6 inches lower than the roads, whereas the box culverts used for drainage are about 5-6 inches higher than the roads.<br />&ldquo;If you only take a look at Mirpur Road, one of the busiest roads of the city stretching from Nilkhet intersection to Mirpur Technical, you will see every problem a Dhaka road could have. Unfinished manhole covers and slabs, potholes, maintenance, missing pitch, you name it,&rdquo; said Mahbub Ali, a Kallyanpur resident.<br />&ldquo;It is a nightmare to drive a motorbike on Dhaka&rsquo;s roads,&rdquo; he claimed, saying: &ldquo;If you try to merely get by while ignoring the flaws in the characters of the city roads, you might just have a road accident. One has to be extra-cautious when driving a motorbike in Dhaka.&rdquo;<br />Allegations of inferior construction and curse of maintenance<br />Numerous people frequently question the quality of material used to construct and repair the roads.<br />Saiful Islam, a resident of Shahjadpur claimed regardless of rain, the roads have always had potholes due to poor construction.<br />&ldquo;They use very little asphalt in building and repairing the roads. The contractors also use more sand than cement in construction&rdquo; he alleged.<br />Although authorities announced there would not be any road maintenance from June to October, the reality is very different.<br />Fresh potholes have exposed the inferiority of the repair work. On top of all this, the monsoon maintenance has only exacerbated the problem.<br />The missing DSCC technologies<br />DSCC introduced two new technologies &ndash; Cold Asphalt Recycling Plant and Cold Milling Machine &ndash; to facilitate their road works.<br />The Cold Asphalt Recycling Plant is uses cold-mix asphalt recycling, a process where asphalt pavement materials are mixed with new asphalt and/or recycling agents to produce cold-base mixtures.<br />The Cold Milling Machine is used for highly efficient removal of asphalt and concrete pavements. In doing so, they create an even, true-to-profile base for the construction of new surface courses of uniform layer thickness.<br />They were inaugurated in November 2016 to make a road in Palashi. But there were no dramatic changes in DSCC roads afterwards.<br />Hollow promises<br />DSCC Mayor Khokon reiterated that repair all the damaged roads will be repaired as monsoon ends.<br />For DNCC, Chief Executive Officer Mohammad Mesbaul Islam denied allegations of low quality construction material. He said the DNCC will swiftly repair the roads in their area as soon as the rain stops.<br />Regular repairs and maintenance has become as daily a habit as commuting, but neither the DSCC mayor nor the DNCC spokesperson could provide a reason as to why the roads are not built to weather the heavy rain, waterlogging and the heavy traffic.</p>', 'upload/5659630d80.jpg', '2017-09-20 05:56:31', 'yes'),
 (21, 'test post ', '<p style=\"text-align: justify;\">Aung San Suu Kyi&rsquo;s name was once synonymous with the struggle against oppression when she had been under house arrest for almost a decade during military rule in Myanmar.</p>\r\n<p style=\"text-align: justify;\">&nbsp;</p>\r\n<p style=\"text-align: justify;\">In accepting the Nobel Peace Prize, she called for &ldquo;a world free from the displaced, the homeless, and the hopeless.&rdquo;</p>\r\n<p style=\"text-align: justify;\">But she has missed perhaps her greatest opportunity to make good on those words as the leader of Myanmar&rsquo;s first civilian government after a half-century of military rule.</p>\r\n<p style=\"text-align: justify;\">Suu Kyi has watched as 270,000 minority Rohingya Muslims &mdash; one-quarter of their population &mdash; have fled Myanmar over the past two weeks, escaping a bloody military crackdown in which soldiers set fire to homes and shot civilians as they tried to escape, according to accounts published by human rights groups.</p>\r\n<p style=\"text-align: justify;\">Many have been crammed into muddy, overcrowded camps in neighbouring Bangladesh, whose authorities this week raised concerns that Myanmar&rsquo;s military was planting land mines along the border while civilians fled.</p>\r\n<p style=\"text-align: justify;\">Dozens have drowned in river crossings. In displacement camps inside Myanmar, Rohingya activists say the government has blocked delivery of food and humanitarian supplies.</p>\r\n<p style=\"text-align: justify;\">Suu Kyi&rsquo;s questionable stance</p>\r\n<p style=\"text-align: justify;\">As condemnations pour in from across the world, Suu Kyi has defended not the displaced Rohingya but the army, saying critics of the crackdown were being deceived by &ldquo;a huge iceberg of misinformation.&rdquo;</p>\r\n<p style=\"text-align: justify;\">The army calls its actions &ldquo;clearance operations&rdquo; aimed at Rohingya insurgents who attacked police on August 25, killing 12 officers.</p>\r\n<p style=\"text-align: justify;\">Reconciling an activist&rsquo;s ideals with the hard realities of governing is never easy, but rarely has an international icon fallen so fast as Suu Kyi.</p>', 'upload/03e6d787fe.jpg', '2017-09-20 07:19:19', 'yes'),
-
-(22, 'Dhaka City', '<p>One of the biggest Traffic congestion occurd today</p>','upload/img1.jpg', '2017-09-19 20:51:47', 'yes'),
-(23, 'White House', '<p>Is people of USA happy with D.Trump</p>','upload/img2.jpg', '2017-09-19 20:51:47', 'yes'),
-(24, 'Amazon', '<p>New tourism.New hope for Brazilian economy</p>','upload/img3.jpg', '2017-09-19 20:51:47', 'yes');
-
-
+(22, 'Dhaka City', '<p>One of the biggest Traffic congestion occurd today</p>', 'upload/img1.jpg', '2017-09-19 20:51:47', 'yes'),
+(23, 'White House', '<p>Is people of USA happy with D.Trump</p>', 'upload/img2.jpg', '2017-09-19 20:51:47', 'yes'),
+(24, 'Amazon', '<p>New tourism.New hope for Brazilian economy</p>', 'upload/img3.jpg', '2017-09-19 20:51:47', 'yes');
 
 -- --------------------------------------------------------
 
@@ -162,11 +160,11 @@ INSERT INTO `page` (`id`, `menu`, `categoryid`) VALUES
 (1, 'BANGLADESH', 2),
 (2, 'INTERNATIONAL', 1),
 (3, 'SPORTS', 3),
+(4, 'LIFE STYLE', 4),
 (5, 'POLITICS', 5),
 (6, 'CULTURE', 6),
 (7, 'CULTURE', 7),
-(8, 'Education', 8),
-(4, 'LIFE STYLE', 4);
+(8, 'Education', 8);
 
 -- --------------------------------------------------------
 
@@ -362,26 +360,31 @@ ALTER TABLE `writes`
 --
 ALTER TABLE `category`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `newspost`
 --
 ALTER TABLE `newspost`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `page`
 --
 ALTER TABLE `page`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- Constraints for dumped tables
 --
