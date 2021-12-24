@@ -13,7 +13,7 @@ services:
       - backend
 
   db:
-    container_name: db
+    container_name: kuis
     image: mysql
     restart: always
     environment:
